@@ -9,6 +9,7 @@ import Pagination from "./components/Pagination";
 function App() {
   const [showCreateView, setShowCreateView] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // حالة الـ sidebar
+  const [activeTab, setActiveTab] = useState('all-issues');
 
   // ⚡️ التحكم بالصفحات
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,19 +43,19 @@ function App() {
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
-      <Sidebar 
-        isOpen={isSidebarOpen} 
-        onClose={() => setIsSidebarOpen(false)} 
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
       />
-      
+
       {/* Overlay للشاشات الصغيرة فقط */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
-      
+
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header onToggleSidebar={toggleSidebar} />
@@ -62,25 +63,39 @@ function App() {
           <StatsCard />
 
           {/* أزرار */}
-          <div className="flex justify-between mb-4">
-            <div className="space-x-2">
-              <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">
-                All Issues
-              </button>
-              <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">
-                All Details
-              </button>
-            </div>
-            <div className="space-x-2">
-              <button
-                className="px-3 py-1 bg-teal-600 text-white rounded hover:bg-teal-700"
-                onClick={() => setShowCreateView(!showCreateView)}
-              >
-                Add View
-              </button>
-              <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">
-                Export
-              </button>
+          <div className="flex justify-center">
+            <div className="flex justify-between w-4/5 mb-4">
+              <div className="space-x-2">
+                <button
+                  className={`px-3 py-1 rounded transition-colors ${activeTab === 'all-issues'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                  onClick={() => setActiveTab('all-issues')}
+                >
+                  All Issues
+                </button>
+                <button
+                  className={`px-3 py-1 rounded transition-colors ${activeTab === 'all-details'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                  onClick={() => setActiveTab('all-details')}
+                >
+                  All Details
+                </button>
+              </div>
+              <div className="space-x-2">
+                <button
+                  className="px-3 py-1 bg-teal-600 text-white rounded hover:bg-teal-700"
+                  onClick={() => setShowCreateView(!showCreateView)}
+                >
+                + Add View
+                </button>
+                <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">
+                  Export
+                </button>
+              </div>
             </div>
           </div>
 
