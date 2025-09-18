@@ -19,12 +19,12 @@ const StatsCard = () => {
   const maxValue = Math.max(...chartData.map(item => item.value));
 
   return (
-    <div className="relative w-full min-h-screen bg-gray-100 overflow-visible">
-      {/* Background Shapes */}
-      <div className="absolute -top-48 -left-48 w-96 h-96 bg-teal-600 transform -skew-x-12"></div>
-      <div className="absolute -top-48 -right-48 w-96 h-96 bg-pink-500 transform skew-x-12"></div>
-      <div className="absolute -bottom-0 -right-48 w-96 h-96 bg-green-300 transform -skew-x-12"></div>
-      <div className="absolute -bottom-0 -left-60 w-96 h-96 bg-yellow-400 rounded-full"></div>
+    <div className="relative w-4/5 mx-auto bg-white rounded-lg shadow-md p-6 overflow-hidden">
+      <div className="absolute -top-48 -left-20 w-40 h-80 bg-teal-600 -skew-x-12 -translate-x-5 z-0 opacity-100"></div>
+      <div className="absolute -top-20 -right-0 w-32 h-60 bg-pink-500 skew-x-12 translate-x-4 z-0 opacity-100"></div>
+      <div className="absolute -bottom-0 -right-40 w-60 h-40 bg-green-300 -skew-x-12 translate-x-8 z-0 opacity-100"></div>
+      <div className="absolute -bottom-20 -left-32 w-60 h-60 bg-yellow-400 rounded-full z-0 opacity-100"></div>
+
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Header */}
@@ -83,7 +83,7 @@ const StatsCard = () => {
             <div className="flex items-center">
               <Calendar className="w-4 h-4 mr-2" />
               <span className="font-medium">Date:</span>
-              <span className="ml-1 font-semibold">10 oct 2004</span>
+              <span className="ml-1 font-semibold">12 Jan 25</span>
             </div>
             <div className="flex items-center">
               <Globe className="w-4 h-4 mr-2" />
